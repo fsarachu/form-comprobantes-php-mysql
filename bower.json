@@ -11,7 +11,7 @@
   "overrides": {
     "materialize": {
       "main": [
-        "bin/materialize.css",
+        "sass/materialize.scss",
         "bin/materialize.js",
         "fonts/roboto/Roboto-Bold.eot",
         "fonts/roboto/Roboto-Bold.ttf",
