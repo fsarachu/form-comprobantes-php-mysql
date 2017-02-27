@@ -48,4 +48,9 @@ var pickadateOptions = {
   ],
 }
 
-$('.datepicker').pickadate(pickadateOptions);
+// Initialize things
+$(function () {
+  $('select').material_select();
+  $('.datepicker').pickadate(pickadateOptions);
+});
+
