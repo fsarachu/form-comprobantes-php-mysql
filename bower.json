@@ -1,5 +1,5 @@
 {
-  "name": "form-comprobantes-ui",
+  "name": "form-comprobantes",
   "private": true,
   "dependencies": {
     "materialize": "^0.98.0"
