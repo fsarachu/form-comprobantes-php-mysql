@@ -25,7 +25,7 @@
   <div class="col s12 m8 offset-m2 l6 offset-l3">
     <div class="card comprobante-card">
       <div class="card-content">
-        <h1>Cargar Comprobante</h1>
+        <h1>Comprobante de Pago</h1>
         <form>
           <div class="row">
             <div class="input-field col s6">
@@ -46,7 +46,7 @@
             <div class="input-field col s6">
               <select name="currency" id="currency">
                 <option value="1" selected>UYU ($)</option>
-                <option value="2">USD (S)</option>
+                <option value="2">USD ($)</option>
                 <option value="3">EUR (€)</option>
                 <option value="4">BRL (R$)</option>
               </select>
@@ -67,7 +67,7 @@
             <div class="file-field input-field col s12">
               <h3>Foto del comprobante</h3>
               <div class="btn-flat">
-                <span>Cargar imagen</span>
+                <span>Seleccionar</span>
                 <input name="image" type="file">
               </div>
               <div class="file-path-wrapper">
@@ -75,14 +75,34 @@
               </div>
             </div>
           </div>
+          <!--<div class="row">-->
+          <!--<div class="col s12">-->
+          <!--<div class="switch">-->
+          <!--<label for="signed_by_business">-->
+          <!--<input  value="true" type="checkbox" id="signed_by_business"/>-->
+          <!--<span class="lever"></span>-->
+          <!--A nombre de la empresa-->
+          <!--</label>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
           <div class="row">
-            <p class="input-field col s6">
-              <input name="signed_by_business" value="true" type="checkbox" id="signed_by_business"/>
+            <p class="col s12">
+              <input name="signed_by_business" type="checkbox" class="filled-in" id="signed_by_business" checked="checked" />
               <label for="signed_by_business">A nombre de la empresa</label>
             </p>
-            <div class="col s6">
-              <button class="btn-large left waves-effect waves-light" type="submit">Cargar comprobante
-              </button>
+            <!--<div class="switch">-->
+            <!--<label>-->
+            <!--No-->
+            <!--<input type="checkbox">-->
+            <!--<span class="lever"></span>-->
+            <!--Si-->
+            <!--</label>-->
+            <!--</div>-->
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <button class="btn-large waves-effect waves-lighter full-width" type="submit">Cargar comprobante</button>
             </div>
           </div>
         </form>
