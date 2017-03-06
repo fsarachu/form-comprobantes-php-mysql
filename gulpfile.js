@@ -36,6 +36,7 @@ gulp.task('styles:vendor', () => {
   const src = bowerDependencies.hasOwnProperty('css') ? bowerDependencies.css : [];
 
   return gulp.src(src)
+    .pipe($.if(!src.length, $.file('no.css', '')))
     .pipe($.concat('vendor.css'))
     .pipe(gulp.dest('app/public/css'))
     .pipe(reload({stream: true}));
@@ -59,6 +60,7 @@ gulp.task('scripts:vendor', () => {
   const src = bowerDependencies.hasOwnProperty('js') ? bowerDependencies.js : [];
 
   return gulp.src(src)
+    .pipe($.if(!src.length, $.file('no.js', '')))
     .pipe($.concat('vendor.js'))
     .pipe(gulp.dest('app/public/js'))
     .pipe(reload({stream: true}));
