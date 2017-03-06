@@ -80,7 +80,6 @@ gulp.task('fonts', () => {
 });
 
 gulp.task('clean', del.bind(null, [
-  '.tmp',
   'app/public/css',
   'app/public/js',
   'app/public/images',
