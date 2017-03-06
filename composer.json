@@ -1,11 +1,16 @@
 {
-    "name": "fsarachu/form-comprobantes",
-    "type": "project",
-    "authors": [
-        {
-            "name": "fsarachu",
-            "email": "fsarachu@gmail.com"
-        }
-    ],
-    "require": {}
+  "name": "fsarachu/form-comprobantes",
+  "type": "project",
+  "authors": [
+    {
+      "name": "fsarachu",
+      "email": "fsarachu@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
 }
