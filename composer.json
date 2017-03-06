@@ -7,7 +7,9 @@
       "email": "fsarachu@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+    "bramus/router": "^1.1"
+  },
   "autoload": {
     "psr-4": {
       "App\\": "app/"
