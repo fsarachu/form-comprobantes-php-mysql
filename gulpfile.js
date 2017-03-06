@@ -146,19 +146,12 @@ gulp.task('serve:test', ['scripts'], () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
-  gulp.src('app/resources/assets/styles/*.scss')
+  return gulp.src('app/resources/assets/styles/*.scss')
     .pipe($.filter(file => file.stat && file.stat.size))
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)+/
     }))
     .pipe(gulp.dest('app/resources/assets/styles'));
-
-  // TODO: Use wiredep programmatic access (https://github.com/taptapship/wiredep#programmatic-access)
-  gulp.src('app/*.html')
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)*\.\./
-    }))
-    .pipe(gulp.dest('app'));
 });
 
 gulp.task('build', ['styles', 'scripts', 'images', 'fonts'], () => {
