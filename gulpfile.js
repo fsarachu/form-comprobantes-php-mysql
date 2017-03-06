@@ -116,36 +116,6 @@ gulp.task('serve', () => {
   });
 });
 
-gulp.task('serve:dist', ['default'], () => {
-  // TODO: Delete serve task or configure proxy server for php
-  browserSync.init({
-    notify: false,
-    port: 9000,
-    server: {
-      baseDir: ['dist']
-    }
-  });
-});
-
-gulp.task('serve:test', ['scripts'], () => {
-  // TODO: Delete serve task or configure proxy server for php
-  browserSync.init({
-    notify: false,
-    port: 9000,
-    ui: false,
-    server: {
-      baseDir: 'test',
-      routes: {
-        '/scripts': '.tmp/scripts',
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
-
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch(['test/spec/**/*.js', 'test/index.html']).on('change', reload);
-});
-
 // inject bower components
 gulp.task('wiredep', () => {
   return gulp.src('app/resources/assets/styles/*.scss')
