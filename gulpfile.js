@@ -68,7 +68,13 @@ gulp.task('fonts', () => {
     .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, [
+  '.tmp',
+  'app/public/css',
+  'app/public/js',
+  'app/public/images',
+  'app/public/fonts'
+]));
 
 gulp.task('serve', () => {
   // TODO: Delete serve task or configure proxy server for php
