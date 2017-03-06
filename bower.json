@@ -9,6 +9,9 @@
     "mocha": "^3.2.0"
   },
   "overrides": {
+    "jquery": {
+      "main": "dist/jquery.min.js"
+    },
     "materialize": {
       "main": [
         "sass/materialize.scss",
