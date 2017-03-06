@@ -43,7 +43,7 @@ gulp.task('styles:vendor', () => {
 
 gulp.task('styles', ['styles:app', 'styles:vendor']);
 
-gulp.task('scripts', () => {
+gulp.task('scripts:app', () => {
   return gulp.src('app/resources/assets/scripts/**/*.js')
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
@@ -53,6 +53,18 @@ gulp.task('scripts', () => {
     .pipe(gulp.dest('app/public/js'))
     .pipe(reload({stream: true}));
 });
+
+gulp.task('scripts:vendor', () => {
+  const bowerDependencies = require('wiredep')();
+  const src = bowerDependencies.hasOwnProperty('js') ? bowerDependencies.js : [];
+
+  return gulp.src(src)
+    .pipe($.concat('vendor.js'))
+    .pipe(gulp.dest('app/public/js'))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('scripts', ['scripts:app', 'scripts:vendor']);
 
 gulp.task('images', () => {
   return gulp.src('app/resources/assets/images/**/*')
