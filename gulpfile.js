@@ -11,7 +11,7 @@ const reload = browserSync.reload;
 
 var dev = true;
 
-gulp.task('styles', () => {
+gulp.task('styles:app', () => {
   return gulp.src('app/resources/assets/styles/*.scss')
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
@@ -30,6 +30,18 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('app/public/css'))
     .pipe(reload({stream: true}));
 });
+
+gulp.task('styles:vendor', () => {
+  const bowerDependencies = require('wiredep')();
+  const src = bowerDependencies.hasOwnProperty('css') ? bowerDependencies.css : [];
+
+  return gulp.src(src)
+    .pipe($.concat('vendor.css'))
+    .pipe(gulp.dest('app/public/css'))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('styles', ['styles:app', 'styles:vendor']);
 
 gulp.task('scripts', () => {
   return gulp.src('app/resources/assets/scripts/**/*.js')
