@@ -12,7 +12,7 @@ const reload = browserSync.reload;
 var dev = true;
 
 gulp.task('styles', () => {
-  return gulp.src('app/styles/*.scss')
+  return gulp.src('app/resources/assets/styles/*.scss')
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.sass.sync({
@@ -27,7 +27,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src('app/resources/assets/scripts/**/*.js')
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.babel())
@@ -38,14 +38,14 @@ gulp.task('scripts', () => {
 
 function lint(files) {
   return gulp.src(files)
-    .pipe($.eslint({ fix: true }))
+    .pipe($.eslint({fix: true}))
     .pipe(reload({stream: true, once: true}))
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
 }
 
 gulp.task('lint', () => {
-  return lint('app/scripts/**/*.js')
+  return lint('app/resources/assets/scripts/**/*.js')
     .pipe(gulp.dest('app/scripts'));
 });
 gulp.task('lint:test', () => {
@@ -54,6 +54,7 @@ gulp.task('lint:test', () => {
 });
 
 gulp.task('html', ['styles', 'scripts'], () => {
+  // TODO: Concatenate and minify assets in other tasks, remove HTML dependency
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
@@ -72,13 +73,14 @@ gulp.task('html', ['styles', 'scripts'], () => {
 });
 
 gulp.task('images', () => {
-  return gulp.src('app/images/**/*')
+  return gulp.src('app/resources/assets/images/**/*')
     .pipe($.cache($.imagemin()))
     .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
+  return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {
+  })
     .concat('app/fonts/**/*'))
     .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
 });
@@ -95,6 +97,7 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
+  // TODO: Delete serve task or configure proxy server for php
   runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'], () => {
     browserSync.init({
       notify: false,
@@ -121,6 +124,7 @@ gulp.task('serve', () => {
 });
 
 gulp.task('serve:dist', ['default'], () => {
+  // TODO: Delete serve task or configure proxy server for php
   browserSync.init({
     notify: false,
     port: 9000,
@@ -131,6 +135,7 @@ gulp.task('serve:dist', ['default'], () => {
 });
 
 gulp.task('serve:test', ['scripts'], () => {
+  // TODO: Delete serve task or configure proxy server for php
   browserSync.init({
     notify: false,
     port: 9000,
@@ -151,13 +156,14 @@ gulp.task('serve:test', ['scripts'], () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
-  gulp.src('app/styles/*.scss')
+  gulp.src('app/resources/assets/styles/*.scss')
     .pipe($.filter(file => file.stat && file.stat.size))
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)+/
     }))
-    .pipe(gulp.dest('app/styles'));
+    .pipe(gulp.dest('app/resources/assets/styles'));
 
+  // TODO: Use wiredep programmatic access (https://github.com/taptapship/wiredep#programmatic-access)
   gulp.src('app/*.html')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)*\.\./
