@@ -21,8 +21,13 @@ gulp.task('styles', () => {
       includePaths: ['.']
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.cssnano({
+      safe: true,
+      autoprefixer: false,
+      discardComments: {removeAll: true}
+    }))
     .pipe($.if(dev, $.sourcemaps.write()))
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest('app/public/css'))
     .pipe(reload({stream: true}));
 });
 
