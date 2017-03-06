@@ -36,8 +36,9 @@ gulp.task('scripts', () => {
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.babel())
+    .pipe($.uglify({compress: {drop_console: true}}))
     .pipe($.if(dev, $.sourcemaps.write('.')))
-    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe(gulp.dest('app/public/js'))
     .pipe(reload({stream: true}));
 });
 
