@@ -52,7 +52,7 @@ gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {
   })
     .concat('app/resources/assets/fonts/**/*'))
-    .pipe(gulp.dest('dist/fonts'));
+    .pipe(gulp.dest('app/public/fonts'));
 });
 
 gulp.task('clean', del.bind(null, [
