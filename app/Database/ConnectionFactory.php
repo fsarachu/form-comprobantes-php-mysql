@@ -3,6 +3,7 @@
 
 namespace App\Database;
 
+use PDO;
 
 class ConnectionFactory
 {
