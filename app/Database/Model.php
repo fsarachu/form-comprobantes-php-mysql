@@ -42,7 +42,7 @@ abstract class Model
 
   public static function get($id)
   {
-    $sql = "SELECT * FROM" . static::$table . "WHERE id = :id LIMIT 1";
+    $sql = "SELECT * FROM " . static::$table . " WHERE id = :id LIMIT 1";
     $query = static::$db->prepare($sql);
     $parameters = array(':id' => $id);
     $query->execute($parameters);
