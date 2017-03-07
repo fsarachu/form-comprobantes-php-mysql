@@ -8,7 +8,7 @@
       <div class="card comprobante-card">
         <div class="card-content">
           <h1>Comprobante de Pago</h1>
-          <form action="/invoice/new" method="post">
+          <form action="/invoice/new" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="input-field col s6">
                 <input name="receipt_date" type="date" class="datepicker" id="receipt_date">
@@ -27,10 +27,13 @@
             <div class="row">
               <div class="input-field col s6">
                 <select name="currency" id="currency">
-                  <option value="1" selected>UYU ($)</option>
-                  <option value="2">USD ($)</option>
-                  <option value="3">EUR (€)</option>
-                  <option value="4">BRL (R$)</option>
+                  {foreach item=currency from=$currencies}
+                    <option value="{$currency->getId()}"
+                      {if $default_currency == $currency->getId()}
+                    selected
+                      {/if}>{$currency->getCode()} ({$currency->getSymbol()})
+                    </option>
+                  {/foreach}
                 </select>
                 <label for="currency">Moneda</label>
               </div>

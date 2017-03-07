@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Currency;
 
 class InvoiceController extends Controller
 {
@@ -10,9 +11,13 @@ class InvoiceController extends Controller
   {
     switch ($_SERVER['REQUEST_METHOD']) {
       case 'GET':
-        static::render('form_invoice.tpl');
+        $data = [];
+        $data['currencies'] = Currency::all();
+        $data['default_currency'] = isset($_SESSION['default_currency']) ? $_SESSION['default_currency'] : 2;
+        static::render('form_invoice.tpl', $data);
         break;
       case 'POST':
+        $_SESSION['default_currency'] = $_POST['currency'];
         echo 'POST!';
     }
 
