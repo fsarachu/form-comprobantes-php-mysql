@@ -21,9 +21,10 @@ abstract class Controller
     $smarty->display($file_name);
   }
 
-  protected static function redirect($url)
+  protected static function redirect($url, $permanent = false)
   {
-    header('Location: ' . $url);
-    die();
+    header('Location: ' . $url, true, $permanent ? 301 : 302);
+
+    exit();
   }
 }
