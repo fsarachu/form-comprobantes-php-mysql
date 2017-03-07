@@ -16,10 +16,13 @@
               </div>
               <div class="input-field col s6">
                 <select name="payment_method" id="payment_method">
-                  <option value="1" selected>Efectivo</option>
-                  <option value="2">Tarjeta de crédito</option>
-                  <option value="3">Tarjeta de débito</option>
-                  <option value="4">Paypal</option>
+                  {foreach item=method from=$payment_methods}
+                    <option value="{$method->getId()}"
+                      {if $default_payment_method == $method->getId()}
+                    selected
+                      {/if}>{$method->getName()}
+                    </option>
+                  {/foreach}
                 </select>
                 <label for="payment_method">Método de pago</label>
               </div>
