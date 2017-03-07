@@ -16,6 +16,8 @@ abstract class Model
     $this->db = ConnectionFactory::create();
   }
 
+  abstract public function validate();
+
   abstract public function save();
 
   abstract public function delete();

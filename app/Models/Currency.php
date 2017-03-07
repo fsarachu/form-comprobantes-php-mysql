@@ -55,6 +55,11 @@ class Currency extends Model
     $this->symbol = $symbol;
   }
 
+  public function validate()
+  {
+    null;
+  }
+
   public function save()
   {
     if ($this->id) {
