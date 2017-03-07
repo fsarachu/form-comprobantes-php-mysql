@@ -61,7 +61,7 @@ var pickadateOptions = {
 
 // Formats
   format: 'd mmmm, yyyy',
-  formatSubmit: 'yyyy/mm/dd',
+  formatSubmit: 'yyyy-mm-dd',
   // hiddenPrefix: undefined,
   // hiddenSuffix: '_submit',
   hiddenName: true,
