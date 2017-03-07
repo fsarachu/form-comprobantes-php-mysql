@@ -29,6 +29,8 @@ class PaymentMethod extends Model
 
   public function save()
   {
+    $this->validate();
+
     if ($this->id) {
       $sql = 'UPDATE ' . static::$table . ' SET name = :name WHERE id = :id';
       $parameters = array(

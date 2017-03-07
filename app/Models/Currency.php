@@ -51,6 +51,8 @@ class Currency extends Model
 
   public function save()
   {
+    $this->validate();
+
     if ($this->id) {
       $sql = 'UPDATE ' . static::$table . ' SET name = :name, code = :code, symbol = :symbol WHERE id = :id';
       $parameters = array(
