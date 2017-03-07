@@ -64,21 +64,30 @@ class Currency extends Model
   {
     if ($this->id) {
       $sql = 'UPDATE ' . static::$table . ' SET name = :name, code = :code, symbol = :symbol WHERE id = :id';
-      $query = static::$db->prepare($sql);
+      $parameters = array(
+        ':id' => $this->id,
+        ':name' => $this->name,
+        ':code' => $this->code,
+        ':symbol' => $this->symbol
+      );
+    } else {
+      $sql = 'INSERT INTO ' . static::$table . ' (`name`, `code`, `symbol`) VALUES (:name, :code, :symbol)';
       $parameters = array(
         ':name' => $this->name,
         ':code' => $this->code,
         ':symbol' => $this->symbol
       );
-      $query->execute($parameters);
     }
+
+    $query = $this->db->prepare($sql);
+    $query->execute($parameters);
   }
 
   public function delete()
   {
     $sql = 'DELETE FROM ' . static::$table . ' WHERE id = :id';
     $query = $this->db->prepare($sql);
-    $parameters = array(':id' => $id);
+    $parameters = array(':id' => $this->id);
     $query->execute($parameters);
   }
 
