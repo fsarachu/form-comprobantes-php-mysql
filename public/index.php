@@ -21,8 +21,12 @@ $router->get('/', function () {
   HomeController::index();
 });
 
-$router->match('GET|POST', '/invoice/new', function () {
-  InvoiceController::newInvoice();
+$router->get('/invoice/new', function () {
+  InvoiceController::create();
+});
+
+$router->post('/invoice/new', function () {
+  InvoiceController::store();
 });
 
 $router->run();
