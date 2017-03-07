@@ -6,6 +6,7 @@ use App\Database\Model;
 
 class Currency extends Model
 {
+  protected static $table = 'currencies';
   private $id = null;
   private $name = null;
   private $code = null;
