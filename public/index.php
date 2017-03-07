@@ -17,8 +17,10 @@ $router->set404(function () {
 });
 
 $router->get('/', function () {
-  $currency = Currency::get(1);
-  echo $currency->name;
+  $currencies = Currency::all();
+  echo '<pre>';
+  echo var_dump($currencies);
+  echo '</pre>';
 });
 
 $router->run();

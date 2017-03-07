@@ -2,6 +2,7 @@
 
 namespace App\Database;
 
+use PDO;
 
 abstract class Model
 {
@@ -23,6 +24,7 @@ abstract class Model
     $db = ConnectionFactory::create();
     $sql = "SELECT * FROM " . static::$table;
     $query = $db->prepare($sql);
+    $query->setFetchMode(PDO::FETCH_CLASS, get_called_class());
     $query->execute();
 
     return $query->fetchAll();
@@ -34,6 +36,7 @@ abstract class Model
     $sql = "SELECT * FROM " . static::$table . " WHERE id = :id LIMIT 1";
     $query = $db->prepare($sql);
     $parameters = array(':id' => $id);
+    $query->setFetchMode(PDO::FETCH_CLASS, get_called_class());
     $query->execute($parameters);
 
     return $query->fetch();
