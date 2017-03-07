@@ -7,7 +7,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 
 
-class Home extends Controller
+class HomeController extends Controller
 {
   public static function index()
   {
