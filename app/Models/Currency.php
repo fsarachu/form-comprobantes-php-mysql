@@ -10,20 +10,9 @@ use App\Core\Model;
 class Currency extends Model
 {
   protected static $table = 'currencies';
-  private $id = null;
   private $name = null;
   private $code = null;
   private $symbol = null;
-
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  public function setId($id)
-  {
-    $this->id = $id;
-  }
 
   public function getName()
   {

@@ -9,11 +9,21 @@ abstract class Model
 {
   protected static $table = null;
   protected $db = null;
-  protected $exists = null;
+  protected $id = null;
 
   public function __construct()
   {
     $this->db = ConnectionFactory::create();
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  public function setId($id)
+  {
+    $this->id = $id;
   }
 
   abstract public function validate();
