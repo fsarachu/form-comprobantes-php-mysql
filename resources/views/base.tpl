@@ -9,12 +9,12 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/vendor.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/css/vendor.css">
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 {block name="body"}{/block}
-<script src="js/vendor.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/vendor.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
