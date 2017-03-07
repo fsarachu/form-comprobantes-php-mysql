@@ -26,7 +26,9 @@ class InvoiceController extends Controller
       case 'POST':
         $_SESSION['default_currency'] = $_POST['currency'];
         $_SESSION['default_payment_method'] = $_POST['payment_method'];
-        echo 'POST!';
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
     }
 
   }
