@@ -6,8 +6,8 @@ use PDO;
 
 abstract class Model
 {
-  private static $table = null;
-  private static $db = null;
+  protected static $table = null;
+  protected static $db = null;
   protected $exists = null;
 
   public function __construct()
