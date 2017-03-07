@@ -12,11 +12,14 @@ abstract class Controller
   protected static function render($file_name, $data = [])
   {
     $smarty = new Smarty();
+    $smarty->setEscapeHtml(true);
     $smarty->setTemplateDir(ROOT . 'resources/views');
 
     foreach ($data as $key => $value) {
       $smarty->assign($key, $value);
     }
+
+    $smarty->assign('URL', $_SERVER['REQUEST_URI']);
 
     $smarty->display($file_name);
   }
