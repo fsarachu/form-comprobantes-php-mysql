@@ -13,3 +13,5 @@ define('DB_NAME', 'comprobantes_app');
 define('DB_USER', 'comprobantes_app');
 define('DB_PASS', 'secret');
 define('DB_CHARSET', 'utf8');
+
+session_start();
