@@ -23,7 +23,7 @@ abstract class Model
   public static function all()
   {
     $db = ConnectionFactory::create();
-    $sql = "SELECT * FROM " . static::$table;
+    $sql = "SELECT * FROM " . static::$table . ' ORDER BY id';
     $query = $db->prepare($sql);
     $query->setFetchMode(PDO::FETCH_CLASS, get_called_class());
     $query->execute();
