@@ -1,4 +1,5 @@
 <?php
+define('BASE_URL', 'http://comprobantes.dev/');
 define('ENVIRONMENT', 'development');
 
 if (ENVIRONMENT == 'development' || ENVIRONMENT == 'dev') {
