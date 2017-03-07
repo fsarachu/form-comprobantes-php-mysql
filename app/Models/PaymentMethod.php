@@ -24,12 +24,32 @@ class PaymentMethod extends Model
 
   public function validate()
   {
-    // TODO: Implement validate() method.
+    // Start with no errors
+    $errors = [];
+
+    // Sanitize
+    $this->name = trim($this->name);
+
+    // Validate
+    if (!strlen($this->name)) {
+      $errors[] = 'Nombre del método requerido';
+    }
+
+    // Return errors
+    return $errors;
   }
 
   public function save()
   {
-    $this->validate();
+    $errors = $this->validate();
+
+    if (count($errors)) {
+      foreach ($errors as $msg) {
+        Flash::message('error', $msg);
+      }
+
+      throw new Exception('ValidationError');
+    }
 
     if ($this->id) {
       $sql = 'UPDATE ' . static::$table . ' SET name = :name WHERE id = :id';
