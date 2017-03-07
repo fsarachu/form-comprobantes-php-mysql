@@ -56,13 +56,4 @@ class PaymentMethod extends Model
     $query = $this->db->prepare($sql);
     $query->execute($parameters);
   }
-
-  public function delete()
-  {
-    $sql = 'DELETE FROM ' . static::$table . ' WHERE id = :id';
-    $query = $this->db->prepare($sql);
-    $parameters = array(':id' => $this->id);
-    $query->execute($parameters);
-  }
-
 }

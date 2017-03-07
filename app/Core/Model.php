@@ -20,7 +20,13 @@ abstract class Model
 
   abstract public function save();
 
-  abstract public function delete();
+  public function delete()
+  {
+    $sql = 'DELETE FROM ' . static::$table . ' WHERE id = :id';
+    $query = $this->db->prepare($sql);
+    $parameters = array(':id' => $this->id);
+    $query->execute($parameters);
+  }
 
   public static function all()
   {
