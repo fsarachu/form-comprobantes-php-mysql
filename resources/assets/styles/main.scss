@@ -1,7 +1,8 @@
 @import "bower_components/materialize/sass/components/color";
 
 $roboto-font-path: "../fonts/";
-$primary-color: color("teal", "base");
+$tabs-underline-color: color("teal", "lighten-1");
+$tabs-text-color: color("teal", "darken-1");
 
 // bower:scss
 @import "bower_components/materialize/sass/materialize.scss";
@@ -9,6 +10,13 @@ $primary-color: color("teal", "base");
 
 body {
   background-color: color("grey", "lighten-3");
+}
+
+nav {
+  color: inherit;
+  background-color: color("shades", "white");
+  height: auto;
+  line-height: normal;
 }
 
 .row {
@@ -52,3 +60,4 @@ body {
 [type="submit"] {
   margin: 1rem 0;
 }
+

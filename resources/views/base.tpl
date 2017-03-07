@@ -14,11 +14,15 @@
 </head>
 <body>
 
-<nav class="nav-wrapper">
-  <div class="container">
-    <ul class="right">
-      <li><a href="/invoice/new">Nuevo</a></li>
-      <li><a href="/invoice/all">Listar</a></li>
+<nav class="row">
+  <div class="col s12 m8 offset-m2 l6 offset-l3">
+    <ul class="tabs">
+      <li class="tab col s6">
+        <a {if $URL == "/invoice/new"}class="active"{/if} target="_self" href="/invoice/new">Nuevo</a>
+      </li>
+      <li class="tab col s6">
+        <a {if $URL == "/invoice/all"}class="active"{/if} target="_self" href="/invoice/all">Listar</a>
+      </li>
     </ul>
   </div>
 </nav>
