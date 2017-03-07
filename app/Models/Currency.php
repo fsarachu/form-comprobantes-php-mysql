@@ -1,8 +1,11 @@
 <?php
 
+
 namespace App\Models;
 
-use App\Database\Model;
+
+use App\Core\Model;
+
 
 class Currency extends Model
 {

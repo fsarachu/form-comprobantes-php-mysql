@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Database;
+namespace App\Core;
 
+use App\Database\ConnectionFactory;
 use PDO;
 
 abstract class Model
