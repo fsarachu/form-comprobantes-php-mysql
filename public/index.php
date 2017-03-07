@@ -29,4 +29,8 @@ $router->post('/invoice/new', function () {
   InvoiceController::store();
 });
 
+$router->get('/invoice/all', function () {
+  InvoiceController::all();
+});
+
 $router->run();
