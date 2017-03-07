@@ -4,9 +4,12 @@
 namespace App\Core;
 
 
+use Smarty;
+
+
 abstract class Controller
 {
-  protected function render($file_name, $data = [])
+  protected static function render($file_name, $data = [])
   {
     $smarty = new Smarty();
     $smarty->setTemplateDir(ROOT . 'resources/views');
