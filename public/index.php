@@ -1,12 +1,12 @@
 <?php
-
 define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
 define('APP', ROOT . 'app' . DIRECTORY_SEPARATOR);
 
 require ROOT . 'vendor/autoload.php';
 require ROOT . 'config/config.php';
 
-use App\Models\Currency;
+use App\Controllers\HomeController;
+use App\Controllers\InvoiceController;
 use Bramus\Router\Router;
 
 $router = new Router();
@@ -17,10 +17,11 @@ $router->set404(function () {
 });
 
 $router->get('/', function () {
-  $currencies = Currency::all();
-  echo '<pre>';
-  echo var_dump($currencies);
-  echo '</pre>';
+  HomeController::index();
+});
+
+$router->match('GET|POST', '/invoice/new', function () {
+  InvoiceController::newInvoice();
 });
 
 $router->run();
