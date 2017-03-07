@@ -20,4 +20,10 @@ abstract class Controller
 
     $smarty->display($file_name);
   }
+
+  protected static function redirect($url)
+  {
+    header('Location: ' . $url);
+    die();
+  }
 }
