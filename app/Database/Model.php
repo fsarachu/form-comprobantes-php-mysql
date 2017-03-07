@@ -12,19 +12,20 @@ abstract class Model
 
   public function __construct()
   {
-    if (!static::$db)
+    if (!static::$db) {
       $pdo_options = array(
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
         PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
         PDO::ATTR_PERSISTENT => true
       );
 
-    static::$db = new PDO(
-      DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET,
-      DB_USER,
-      DB_PASS,
-      $pdo_options
-    );
+      static::$db = new PDO(
+        DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET,
+        DB_USER,
+        DB_PASS,
+        $pdo_options
+      );
+    }
   }
 
   abstract public function save();
