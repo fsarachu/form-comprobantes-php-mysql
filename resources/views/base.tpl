@@ -15,10 +15,12 @@
 <body>
 
 <nav class="nav-wrapper">
-  <ul>
-    <li><a href="/invoice/new">Nuevo Comprobante</a></li>
-    <li><a href="/invoice/all">Listar Comprobantes</a></li>
-  </ul>
+  <div class="container">
+    <ul class="right">
+      <li><a href="/invoice/new">Nuevo</a></li>
+      <li><a href="/invoice/all">Listar</a></li>
+    </ul>
+  </div>
 </nav>
 
 {block name="body"}{/block}
