@@ -13,7 +13,16 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+
+<nav class="nav-wrapper">
+  <ul>
+    <li><a href="/invoice/new">Nuevo Comprobante</a></li>
+    <li><a href="/invoice/all">Listar Comprobantes</a></li>
+  </ul>
+</nav>
+
 {block name="body"}{/block}
+
 <script src="/js/vendor.js"></script>
 <script src="/js/main.js"></script>
 </body>
