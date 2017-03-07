@@ -6,6 +6,7 @@ define('APP', ROOT . 'app' . DIRECTORY_SEPARATOR);
 require ROOT . 'vendor/autoload.php';
 require ROOT . 'config/config.php';
 
+use App\Models\Currency;
 use Bramus\Router\Router;
 
 $router = new Router();
@@ -16,7 +17,8 @@ $router->set404(function () {
 });
 
 $router->get('/', function () {
-  echo "Hello World";
+  $currency = Currency::get(1);
+  echo $currency->name;
 });
 
 $router->run();
