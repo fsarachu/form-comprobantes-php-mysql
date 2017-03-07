@@ -18,8 +18,8 @@ class InvoiceController extends Controller
 
     $data['payment_methods'] = PaymentMethod::all();
     $data['default_payment_method'] = isset($_SESSION['default_payment_method']) ? $_SESSION['default_payment_method'] : 1;
-    $data['dirty_message'] = '<em>Hello</em>';
-    static::render('form_invoice.tpl', $data);
+
+    static::render('invoice_form.tpl', $data);
   }
 
   public static function store()
@@ -71,6 +71,6 @@ class InvoiceController extends Controller
 
   public static function all()
   {
-    static::render('list_invoices.tpl');
+    static::render('invoice_list.tpl');
   }
 }
