@@ -11,11 +11,6 @@ class Currency extends Model
   private $code = null;
   private $symbol = null;
 
-  public function __construct()
-  {
-    parent::__construct();
-  }
-
   public function getId()
   {
     return $this->id;
