@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28e372ed5d3f8c172b9793f06239046f",
-    "content-hash": "4fe468135ce70a4d78de49cc1458a61f",
+    "hash": "6f49c0db9807df2bb51d1f9a07378ade",
+    "content-hash": "0b04aee1ba958cdadcdc0a47ef8ae089",
     "packages": [
         {
             "name": "bramus/router",
@@ -54,200 +54,27 @@
             "time": "2016-05-26 19:40:20"
         },
         {
-            "name": "doctrine/inflector",
-            "version": "v1.1.0",
+            "name": "joelvardy/flash",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/inflector.git",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
+                "url": "https://github.com/joelvardy/flash.git",
+                "reference": "80bcd8b0796592915fe91b74d76f39785522184f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
+                "url": "https://api.github.com/repos/joelvardy/flash/zipball/80bcd8b0796592915fe91b74d76f39785522184f",
+                "reference": "80bcd8b0796592915fe91b74d76f39785522184f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Inflector\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "inflection",
-                "pluralize",
-                "singularize",
-                "string"
-            ],
-            "time": "2015-11-06 14:35:42"
-        },
-        {
-            "name": "illuminate/contracts",
-            "version": "v5.4.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/contracts.git",
-                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/dd256891c80fd94a58ab83d7989d6da2f50e30ea",
-                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "The Illuminate Contracts package.",
-            "homepage": "https://laravel.com",
-            "time": "2017-02-21 14:21:59"
-        },
-        {
-            "name": "illuminate/support",
-            "version": "v5.4.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/support.git",
-                "reference": "904f63003fd67ede2ec3be018b322d1c29415465"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/904f63003fd67ede2ec3be018b322d1c29415465",
-                "reference": "904f63003fd67ede2ec3be018b322d1c29415465",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/inflector": "~1.0",
-                "ext-mbstring": "*",
-                "illuminate/contracts": "5.4.*",
-                "paragonie/random_compat": "~1.4|~2.0",
-                "php": ">=5.6.4"
-            },
-            "replace": {
-                "tightenco/collect": "self.version"
-            },
-            "suggest": {
-                "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-                "symfony/process": "Required to use the composer class (~3.2).",
-                "symfony/var-dumper": "Required to use the dd function (~3.2)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Support\\": ""
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "The Illuminate Support package.",
-            "homepage": "https://laravel.com",
-            "time": "2017-02-15 19:29:24"
-        },
-        {
-            "name": "mdupaul/flash",
-            "version": "1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/AtomClock/flash.git",
-                "reference": "65a4a13f675b18c773f71228016fb74da594d057"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/AtomClock/flash/zipball/65a4a13f675b18c773f71228016fb74da594d057",
-                "reference": "65a4a13f675b18c773f71228016fb74da594d057",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "dev-master"
+                "php": ">=5.0.0"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Mdupaul\\Flash": "src/"
-                },
-                "files": [
-                    "src/Mdupaul/Flash/functions.php"
-                ]
+                    "Joelvardy": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -255,60 +82,20 @@
             ],
             "authors": [
                 {
-                    "name": "Maxime Dupaul",
-                    "email": "maximedupaul@gmail.com"
+                    "name": "Joel Vardy",
+                    "email": "info@joelvardy.com",
+                    "homepage": "https://joelvardy.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "Easy flash notifications with multiple messages",
-            "time": "2016-09-22 18:10:32"
-        },
-        {
-            "name": "paragonie/random_compat",
-            "version": "v2.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/6968531206671f94377b01dc7888d5d1b858a01b",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
-            },
-            "suggest": {
-                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/random.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com"
-                }
-            ],
-            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "description": "Library for storing and retrieving flash data / messages.",
+            "homepage": "https://github.com/joelvardy/flash",
             "keywords": [
-                "csprng",
-                "pseudorandom",
-                "random"
+                "data",
+                "flash",
+                "messages"
             ],
-            "time": "2017-03-03 20:43:42"
+            "time": "2013-10-02 22:15:14"
         },
         {
             "name": "smarty/smarty",
@@ -367,7 +154,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "joelvardy/flash": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

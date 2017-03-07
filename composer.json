@@ -10,7 +10,7 @@
   "require": {
     "bramus/router": "^1.1",
     "smarty/smarty": "^3.1",
-    "mdupaul/flash": "^1.3"
+    "joelvardy/flash": "dev-master"
   },
   "autoload": {
     "psr-4": {
