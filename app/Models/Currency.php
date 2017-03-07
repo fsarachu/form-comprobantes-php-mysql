@@ -59,7 +59,7 @@ class Currency extends Model
       $errors[] = 'Nombre de la moneda requerido';
     }
 
-    if (!preg_match('/^[A-Z]{3}$/g', $this->code)) {
+    if (!preg_match('/^[A-Z]{3}$/', $this->code)) {
       $errors[] = 'El código de la moneda debe de ser de exactamente 3 caracteres';
     }
 
