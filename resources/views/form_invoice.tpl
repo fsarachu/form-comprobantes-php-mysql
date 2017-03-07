@@ -11,8 +11,8 @@
           <form action="/invoice/new" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="input-field col s6">
-                <input name="receipt_date" type="date" class="datepicker" id="receipt_date">
-                <label class="active" for="receipt_date">Fecha</label>
+                <input name="invoice_date" type="date" class="datepicker" id="invoice_date">
+                <label class="active" for="invoice_date">Fecha</label>
               </div>
               <div class="input-field col s6">
                 <select name="payment_method" id="payment_method">
