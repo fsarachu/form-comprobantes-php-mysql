@@ -18,36 +18,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>25/02/17</td>
-              <td>UYU</td>
-              <td>$594.00</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>03/09/16</td>
-              <td>UYU</td>
-              <td>$19323.00</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>21/01/17</td>
-              <td>USD</td>
-              <td>$23.50</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>14/01/17</td>
-              <td>UYU</td>
-              <td>$3194.00</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>04/03/17</td>
-              <td>ARS</td>
-              <td>$12400.00</td>
-            </tr>
+            {foreach from=$invoices item=invoice}
+              <tr>
+                <td>{$invoice->getId()}</td>
+                <td>{$invoice->getInvoiceDate()}</td>
+                <td>{$invoice->getCurrencyObj()->getCode()}</td>
+                <td>{$invoice->getCurrencyObj()->getSymbol()} {$invoice->getAmount()}</td>
+              </tr>
+            {/foreach}
             </tbody>
           </table>
         </div>

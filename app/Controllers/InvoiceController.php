@@ -72,6 +72,7 @@ class InvoiceController extends Controller
 
   public static function all()
   {
-    static::render('invoice_list.tpl');
+    $data['invoices'] = Invoice::all();
+    static::render('invoice_list.tpl', $data);
   }
 }
