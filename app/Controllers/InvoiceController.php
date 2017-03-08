@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Models\Currency;
 use App\Models\Invoice;
 use App\Models\PaymentMethod;
+use BulletProof\Image;
 use Joelvardy\Flash;
 
 class InvoiceController extends Controller
@@ -58,7 +59,20 @@ class InvoiceController extends Controller
       $invoice->setSignedByBusiness(true);
     }
 
-    // TODO: Image upload
+    $image = new Image($_FILES);
+    $image->setLocation(ROOT . 'public/uploads');
+
+    if($image["pictures"]){
+      $upload = $image->upload();
+
+      if($upload){
+        Flash::message('success', 'Imagen (' . $image->getName() . ') subida con éxito');
+      }else{
+        Flash::message('error', 'No se  pudo subir la imagen');
+        Flash::message('error', $image["error"]);
+        static::redirect(BASE_URL . 'invoice/new');
+      }
+    }
 
     try {
       $invoice->save();
