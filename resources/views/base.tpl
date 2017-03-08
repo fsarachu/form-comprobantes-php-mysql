@@ -18,10 +18,10 @@
   <div class="col s12 m8 offset-m2 l6 offset-l3">
     <ul class="tabs">
       <li class="tab col s6">
-        <a {if $URL == "/invoice/new"}class="active"{/if} target="_self" href="/invoice/new">Nuevo</a>
+        <a {if $CURRENT_URL == "/invoice/new"}class="active"{/if} target="_self" href="/invoice/new">Nuevo</a>
       </li>
       <li class="tab col s6">
-        <a {if $URL == "/invoice/all"}class="active"{/if} target="_self" href="/invoice/all">Listar</a>
+        <a {if $CURRENT_URL == "/invoice/all"}class="active"{/if} target="_self" href="/invoice/all">Listar</a>
       </li>
     </ul>
   </div>

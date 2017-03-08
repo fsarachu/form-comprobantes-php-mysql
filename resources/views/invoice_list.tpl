@@ -13,8 +13,8 @@
             <tr>
               <th>Id</th>
               <th>Fecha</th>
-              <th>Moneda</th>
               <th>Monto</th>
+              <th>Imagen</th>
             </tr>
             </thead>
             <tbody>
@@ -22,8 +22,12 @@
               <tr>
                 <td>{$invoice->getId()}</td>
                 <td>{$invoice->getInvoiceDate()}</td>
-                <td>{$invoice->getCurrencyObj()->getCode()}</td>
-                <td>{$invoice->getCurrencyObj()->getSymbol()} {$invoice->getAmount()}</td>
+                <td>({$invoice->getCurrencyObj()->getCode()}) {$invoice->getCurrencyObj()->getSymbol()} {$invoice->getAmount()}</td>
+                {if $invoice->getImage() != ""}
+                  <td><a target="_blank" href="{$BASE_URL nofilter}{$invoice->getImage() nofilter}">Ver</a></td>
+                {else}
+                  <td>-</td>
+                {/if}
               </tr>
             {/foreach}
             </tbody>
