@@ -55,6 +55,8 @@ class InvoiceController extends Controller
     if (isset($_POST['signed_by_business']) && $_POST['signed_by_business'] === 'true') {
       $invoice->setSignedByBusiness(true);
       $_SESSION['default_signed_by_business'] = $_POST['signed_by_business'];
+    } else {
+      $invoice->setSignedByBusiness(false);
     }
 
     $image = new Image($_FILES);
