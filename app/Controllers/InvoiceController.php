@@ -82,7 +82,7 @@ class InvoiceController extends Controller
       $invoice->save();
       Flash::message('success', 'Comprobante cargado con éxito!');
       static::redirect(BASE_URL . 'invoice/all');
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       Flash::message('error', 'No se pudo cargar el comprobante: ' . $e->getMessage());
       static::redirect(BASE_URL . 'invoice/new');
     }

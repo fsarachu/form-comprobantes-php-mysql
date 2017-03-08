@@ -5,7 +5,6 @@ namespace App\Models;
 
 
 use App\Core\Model;
-use Exception;
 use Joelvardy\Flash;
 
 class Invoice extends Model
@@ -179,7 +178,7 @@ class Invoice extends Model
         Flash::message('error', $msg);
       }
 
-      throw new Exception('ValidationError');
+      throw new \Exception('ValidationError');
     }
 
     if ($this->id) {

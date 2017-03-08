@@ -48,7 +48,7 @@ class PaymentMethod extends Model
         Flash::message('error', $msg);
       }
 
-      throw new Exception('ValidationError');
+      throw new \Exception('ValidationError');
     }
 
     if ($this->id) {
