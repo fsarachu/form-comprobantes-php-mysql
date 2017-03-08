@@ -1,5 +1,7 @@
 <?php
 define('BASE_URL', 'http://comprobantes.dev/');
+define('UPLOAD_DIR', 'public/uploads');
+define('UPLOAD_URL', 'uploads/');
 define('ENVIRONMENT', 'development');
 
 if (ENVIRONMENT == 'development' || ENVIRONMENT == 'dev') {
