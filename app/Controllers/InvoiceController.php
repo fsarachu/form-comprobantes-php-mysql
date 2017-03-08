@@ -26,13 +26,6 @@ class InvoiceController extends Controller
 
   public static function store()
   {
-    $_SESSION['default_currency'] = $_POST['currency'];
-    $_SESSION['default_payment_method'] = $_POST['payment_method'];
-
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
-
     $invoice = new Invoice();
 
     if (isset($_POST['invoice_date'])) {
@@ -41,37 +34,48 @@ class InvoiceController extends Controller
 
     if (isset($_POST['payment_method'])) {
       $invoice->setPaymentMethod($_POST['payment_method']);
+      $_SESSION['default_payment_method'] = $_POST['payment_method'];
     }
 
     if (isset($_POST['currency'])) {
       $invoice->setCurrency($_POST['currency']);
+      $_SESSION['default_currency'] = $_POST['currency'];
     }
 
     if (isset($_POST['amount'])) {
       $invoice->setAmount($_POST['amount']);
+      $_SESSION['default_amount'] = $_POST['amount'];
     }
 
     if (isset($_POST['description'])) {
       $invoice->setDescription($_POST['description']);
+      $_SESSION['default_description'] = $_POST['description'];
     }
 
     if (isset($_POST['signed_by_business']) && $_POST['signed_by_business'] === 'true') {
       $invoice->setSignedByBusiness(true);
+      $_SESSION['default_signed_by_business'] = $_POST['signed_by_business'];
     }
 
     $image = new Image($_FILES);
-    $image->setLocation(ROOT . 'public/uploads');
+    $image->setLocation(ROOT . UPLOAD_DIR, '0777');
+    $image->setSize(1, 2 * 1024 * 1024);
+    $image->setDimension(5000, 5000);
 
-    if($image["pictures"]){
+    if ($image["invoice_image"]) {
       $upload = $image->upload();
 
-      if($upload){
-        Flash::message('success', 'Imagen (' . $image->getName() . ') subida con éxito');
-      }else{
+      if ($upload) {
+        $image_url = UPLOAD_URL . $image->getName() . '.' . $image->getMime();
+        $invoice->setImage($image_url);
+      } else {
         Flash::message('error', 'No se  pudo subir la imagen');
-        Flash::message('error', $image["error"]);
+        Flash::message('error', $image['error']);
+
         static::redirect(BASE_URL . 'invoice/new');
       }
+    } else {
+      Flash::message('warning', 'No se adjuntó imagen');
     }
 
     try {
