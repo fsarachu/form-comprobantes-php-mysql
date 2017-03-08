@@ -137,30 +137,30 @@ class Invoice extends Model
       $errors[] = 'Formato de fecha inválido';
     } else {
       $ex = explode('-', $this->invoice_date);
-      if(!checkdate((int)$ex[1], (int)$ex[2], (int)$ex[0])) {
+      if (!checkdate((int)$ex[1], (int)$ex[2], (int)$ex[0])) {
         $errors[] = 'Fecha inválida';
       }
     }
 
-    if(!is_numeric($this->payment_method)) {
+    if (!is_numeric($this->payment_method)) {
       $errors[] = 'Método de pago tiene que ser un número (id)';
     } else {
       $exists = PaymentMethod::get($this->payment_method);
-      if(!$exists) {
+      if (!$exists) {
         $errors[] = 'No existe un metodo de pago asociado con ese id';
       }
     }
 
-    if(!is_numeric($this->currency)) {
+    if (!is_numeric($this->currency)) {
       $errors[] = 'Moneda tiene que ser un número (id)';
     } else {
       $exists = Currency::get($this->currency);
-      if(!$exists) {
+      if (!$exists) {
         $errors[] = 'No existe una moneda asociada con ese id';
       }
     }
 
-    if(!preg_match('/^[-+]?\d+(\.\d+)?$/', $this->amount)) {
+    if (!preg_match('/^[-+]?\d+(\.\d+)?$/', $this->amount)) {
       $errors [] = "Monto debe ser un número decimal";
     }
 
@@ -214,5 +214,7 @@ class Invoice extends Model
 
     $query = $this->db->prepare($sql);
     $query->execute($parameters);
+
+    return $this->db->lastInsertId();
   }
 }
