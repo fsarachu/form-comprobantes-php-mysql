@@ -5,6 +5,8 @@ namespace App\Models;
 
 
 use App\Core\Model;
+use Exception;
+use Joelvardy\Flash;
 
 class Invoice extends Model
 {
