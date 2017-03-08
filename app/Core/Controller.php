@@ -20,7 +20,8 @@ abstract class Controller
       $smarty->assign($key, $value);
     }
 
-    $smarty->assign('URL', $_SERVER['REQUEST_URI']);
+    $smarty->assign('CURRENT_URL', $_SERVER['REQUEST_URI']);
+    $smarty->assign('BASE_URL', BASE_URL);
 
     $flashes = Flash::message();
     $smarty->assign('flashes', $flashes);
@@ -44,7 +45,7 @@ abstract class Controller
         'signed_by_business' => null,
       ]);
     }
-
+    $smarty->assign('dirty', '<strong>DIRTY</strong>');
     $smarty->display($file_name);
   }
 
