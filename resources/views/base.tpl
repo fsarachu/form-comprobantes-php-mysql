@@ -27,6 +27,8 @@
   </div>
 </nav>
 
+{include file="flashes.tpl"}
+
 {block name="body"}{/block}
 
 <script src="/js/vendor.js"></script>

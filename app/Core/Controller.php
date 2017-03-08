@@ -4,6 +4,7 @@
 namespace App\Core;
 
 
+use Joelvardy\Flash;
 use Smarty;
 
 
@@ -18,6 +19,8 @@ abstract class Controller
     foreach ($data as $key => $value) {
       $smarty->assign($key, $value);
     }
+
+    $smarty->assign('flashes', Flash::message());
 
     $smarty->assign('URL', $_SERVER['REQUEST_URI']);
 

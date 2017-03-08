@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Models\Currency;
 use App\Models\Invoice;
 use App\Models\PaymentMethod;
+use Joelvardy\Flash;
 
 class InvoiceController extends Controller
 {
@@ -61,10 +62,10 @@ class InvoiceController extends Controller
 
     try {
       $invoice->save();
-      // TODO: Flash success message
+      Flash::message('success', 'Comprobante cargado con éxito!');
       static::redirect(BASE_URL . 'invoice/all');
     } catch (Exception $e) {
-      // TODO: Flash error message
+      Flash::message('error', 'No se pudo cargar el comprobante: ' . $e->getMessage());
       static::redirect(BASE_URL . 'invoice/new');
     }
   }
