@@ -12,7 +12,9 @@ class Invoice extends Model
 
   private $invoice_date = null;
   private $payment_method = null;
+  private $payment_method_obj = null;
   private $currency = null;
+  private $currency_obj = null;
   private $amount = null;
   private $description = null;
   private $image = null;
@@ -39,6 +41,15 @@ class Invoice extends Model
     $this->payment_method = $payment_method;
   }
 
+  public function getPaymentMethodObj()
+  {
+    if (!$this->payment_method_obj) {
+      $this->payment_method_obj = PaymentMethod::get($this->payment_method);
+    }
+
+    return $this->payment_method_obj;
+  }
+
   public function getCurrency()
   {
     return $this->currency;
@@ -47,6 +58,15 @@ class Invoice extends Model
   public function setCurrency($currency)
   {
     $this->currency = $currency;
+  }
+
+  public function getCurrencyObj()
+  {
+    if (!$this->currency_obj) {
+      $this->currency_obj = Currency::get($this->currency);
+    }
+
+    return $this->currency_obj;
   }
 
   public function getAmount()
