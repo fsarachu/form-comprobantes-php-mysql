@@ -58,7 +58,7 @@ class InvoiceController extends Controller
     }
 
     $image = new Image($_FILES);
-    $image->setLocation(ROOT . UPLOAD_DIR, '0777');
+    $image->setLocation(ROOT . UPLOAD_DIR, 0777);
     $image->setSize(1, 2 * 1024 * 1024);
     $image->setDimension(5000, 5000);
 
