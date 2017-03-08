@@ -18,7 +18,7 @@
                 <select name="payment_method" id="payment_method">
                   {foreach item=method from=$payment_methods}
                     <option value="{$method->getId()}"
-                      {if $default_payment_method == $method->getId()}
+                      {if $form_defaults['payment_method'] == $method->getId()}
                     selected
                       {/if}>{$method->getName()}
                     </option>
@@ -32,7 +32,7 @@
                 <select name="currency" id="currency">
                   {foreach item=currency from=$currencies}
                     <option value="{$currency->getId()}"
-                      {if $default_currency == $currency->getId()}
+                      {if $form_defaults['currency'] == $currency->getId()}
                     selected
                       {/if}>{$currency->getCode()} ({$currency->getSymbol()})
                     </option>
@@ -41,13 +41,15 @@
                 <label for="currency">Moneda</label>
               </div>
               <div class="input-field col s6">
-                <input name="amount" type="number" step="0.01" min="0.00" placeholder="0.00" id="amount">
+                <input name="amount" type="number" step="0.01" min="0.00" placeholder="0.00" id="amount"
+                       {if $form_defaults['amount']}value="{$form_defaults['amount']}"{/if}>
                 <label for="amount">Monto</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <textarea name="description" class="materialize-textarea" placeholder="" id="description"></textarea>
+                <textarea name="description" class="materialize-textarea" placeholder="..."
+                          id="description">{if $form_defaults['description']}{$form_defaults['description']}{/if}</textarea>
                 <label for="description">Descripción</label>
               </div>
             </div>
@@ -56,7 +58,7 @@
                 <h3>Foto del comprobante</h3>
                 <div class="btn-flat">
                   <span>Seleccionar</span>
-                  <input name="image" type="file">
+                  <input name="invoice_image" type="file">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
@@ -66,7 +68,7 @@
             <div class="row">
               <p class="col s12">
                 <input name="signed_by_business" value="true" type="checkbox" class="filled-in"
-                       id="signed_by_business"/>
+                       id="signed_by_business" {if $form_defaults['signed_by_business']}checked{/if}/>
                 <label for="signed_by_business">A nombre de la empresa</label>
               </p>
             </div>
