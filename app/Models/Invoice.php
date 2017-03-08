@@ -121,12 +121,64 @@ class Invoice extends Model
 
   public function validate()
   {
-    // TODO: Implement validate() method.
+    // Start with no errors
+    $errors = [];
+
+    // Sanitize
+    $this->invoice_date = trim($this->invoice_date);
+    $this->payment_method = trim($this->payment_method);
+    $this->currency = trim($this->currency);
+    $this->amount = trim($this->amount);
+    $this->description = trim($this->description);
+    $this->image = trim($this->image);
+
+    // Validate
+    if (!preg_match('/^\d{4}-\d{1,2}-\d{1,2}$/', $this->invoice_date)) {
+      $errors[] = 'Formato de fecha inválido';
+    } else {
+      $ex = explode('-', $this->invoice_date);
+      if(!checkdate((int)$ex[1], (int)$ex[2], (int)$ex[0])) {
+        $errors[] = 'Fecha inválida';
+      }
+    }
+
+    if(!is_numeric($this->payment_method)) {
+      $errors[] = 'Método de pago tiene que ser un número (id)';
+    } else {
+      $exists = PaymentMethod::get($this->payment_method);
+      if(!$exists) {
+        $errors[] = 'No existe un metodo de pago asociado con ese id';
+      }
+    }
+
+    if(!is_numeric($this->currency)) {
+      $errors[] = 'Moneda tiene que ser un número (id)';
+    } else {
+      $exists = Currency::get($this->currency);
+      if(!$exists) {
+        $errors[] = 'No existe una moneda asociada con ese id';
+      }
+    }
+
+    if(!preg_match('/^[-+]?\d+(\.\d+)?$/', $this->amount)) {
+      $errors [] = "Monto debe ser un número decimal";
+    }
+
+    // Return errors
+    return $errors;
   }
 
   public function save()
   {
-    $this->validate();
+    $errors = $this->validate();
+
+    if (count($errors)) {
+      foreach ($errors as $msg) {
+        Flash::message('error', $msg);
+      }
+
+      throw new Exception('ValidationError');
+    }
 
     if ($this->id) {
       $sql = 'UPDATE ';
