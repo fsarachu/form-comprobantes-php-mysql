@@ -19,7 +19,7 @@ class Invoice extends Model
   private $amount = null;
   private $description = null;
   private $image = null;
-  private $signed_by_business = null;
+  private $signed_by_business = 0;
   private $submitted_at = null;
 
   public function getInvoiceDate()
@@ -214,8 +214,9 @@ class Invoice extends Model
     }
 
     $query = $this->db->prepare($sql);
-    $query->execute($parameters);
 
-    return $this->db->lastInsertId();
+    if(!$query->execute($parameters)) {
+      throw new \Exception("DB Insert failed!");
+    }
   }
 }
